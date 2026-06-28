@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AS Collections — Premium Everyday Jewellery</title>
+  <meta name="description" content="AS Collections — premium everyday jewellery in 925 silver. Rings, necklaces, earrings and bracelets, made to never come off." />
+  <link rel="canonical" href="https://ascollections.example/" />
+  <meta name="theme-color" content="#7A2E2A" />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="AS Collections" />
+  <meta property="og:title" content="AS Collections — Premium Everyday Jewellery" />
+  <meta property="og:description" content="Premium everyday jewellery in 925 silver, made to never come off." />
+  <meta property="og:url" content="https://ascollections.example/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="AS Collections — Premium Everyday Jewellery" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"AS Collections","url":"https://ascollections.example/","description":"Premium everyday jewellery in 925 silver."}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"AS Collections","url":"https://ascollections.example/"}</script>
+
+  <!-- Preload hero fonts → protects LCP/CLS. -->
+  <link rel="preload" href="assets/fonts/fraunces-opsz.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="assets/fonts/plus-jakarta-wght.woff2" as="font" type="font/woff2" crossorigin />
+
+  <!-- Load order: tokens → base → components. -->
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/components/button.css" />
+  <link rel="stylesheet" href="css/components/announcement-bar.css" />
+  <link rel="stylesheet" href="css/components/header.css" />
+  <link rel="stylesheet" href="css/components/hero.css" />
+  <link rel="stylesheet" href="css/components/section.css" />
+  <link rel="stylesheet" href="css/components/category-card.css" />
+  <link rel="stylesheet" href="css/components/product-card.css" />
+  <link rel="stylesheet" href="css/components/search-modal.css" />
+  <link rel="stylesheet" href="css/components/quick-view.css" />
+  <link rel="stylesheet" href="css/components/cart-drawer.css" />
+  <link rel="stylesheet" href="css/components/collection-band.css" />
+  <link rel="stylesheet" href="css/components/reviews.css" />
+  <link rel="stylesheet" href="css/components/trust.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ANNOUNCEMENT BAR (messages + rotation from announcement-bar.js) -->
+  <div class="announce">
+    <div class="announce__track" id="announce-track"><!-- items injected --></div>
+  </div>
+
+  <!-- HEADER (nav built from config; transparent→solid on scroll) -->
+  <header class="header">
+    <div class="container header__inner">
+      <button class="icon-btn hamburger" id="hamburger" aria-label="Open menu" aria-controls="drawer" aria-expanded="false">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+
+      <a href="/" class="brand">AS Collections</a>
+
+      <nav class="nav" id="nav" aria-label="Primary"><!-- links injected --></nav>
+
+      <div class="header__icons">
+        <button class="icon-btn" aria-label="Search" data-search-open>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        </button>
+        <button class="icon-btn" aria-label="Wishlist">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s-7.5-4.6-10-9.2A5.4 5.4 0 0 1 12 6a5.4 5.4 0 0 1 10 5.8C19.5 16.4 12 21 12 21z"/></svg>
+          <span class="icon-btn__count" data-count="0" id="wishlist-count">0</span>
+        </button>
+        <button class="icon-btn" aria-label="Cart">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 2 4 6v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6l-2-4z"/><path d="M4 6h16M9 10a3 3 0 0 0 6 0"/></svg>
+          <span class="icon-btn__count" data-count="0" id="cart-count">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE DRAWER -->
+  <div class="drawer__backdrop" id="drawer-backdrop"></div>
+  <aside class="drawer" id="drawer" aria-hidden="true" aria-label="Menu" inert>
+    <button class="icon-btn drawer__close" id="drawer-close" aria-label="Close menu">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+    <nav id="drawer-nav" aria-label="Mobile"><!-- links injected --></nav>
+  </aside>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero__inner">
+        <p class="eyebrow hero__eyebrow">New Arrivals · Everyday Gold</p>
+        <h1 class="display hero__title">Quiet pieces, made to never come off.</h1>
+        <a class="btn btn--glass hero__cta" href="#new-arrivals">Shop New Arrivals →</a>
+      </div>
+    </section>
+
+    <!-- SHOP BY CATEGORY -->
+    <section class="section container">
+      <div class="section-head reveal"><h2>Shop by category</h2></div>
+      <div class="cat-grid reveal" id="categories"><!-- cards injected --></div>
+    </section>
+
+    <!-- NEW ARRIVALS -->
+    <section class="section container" id="new-arrivals">
+      <div class="section-head reveal">
+        <h2>New Arrivals</h2>
+        <a class="section-head__link" href="/pages/shop.html?sort=newest">View all →</a>
+      </div>
+      <div class="rail reveal" id="new-arrivals-rail" aria-label="New arrivals"><!-- cards injected --></div>
+    </section>
+
+    <!-- COLLECTION BAND -->
+    <section class="section container">
+      <div class="band reveal">
+        <div>
+          <p class="eyebrow band__eyebrow">The Everyday Gold Edit</p>
+          <h2 class="band__title">Designed to be worn, not saved for later.</h2>
+          <p class="band__text">925 silver with 18k gold plating. Pieces light enough for every day and finished well enough for the days that matter.</p>
+          <a class="btn btn--glass" href="/pages/shop.html?collection=col-everyday">Explore the edit →</a>
+        </div>
+        <div class="band__art"><span class="band__art-mark">AS</span></div>
+      </div>
+    </section>
+
+    <!-- BEST SELLERS -->
+    <section class="section container">
+      <div class="section-head reveal">
+        <h2>Best Sellers</h2>
+        <a class="section-head__link" href="/pages/shop.html">View all →</a>
+      </div>
+      <div class="rail reveal" id="best-sellers" aria-label="Best sellers"><!-- cards injected --></div>
+    </section>
+
+    <!-- TRENDING -->
+    <section class="section container">
+      <div class="section-head reveal">
+        <h2>Trending Now</h2>
+        <a class="section-head__link" href="/pages/shop.html">View all →</a>
+      </div>
+      <div class="rail reveal" id="trending" aria-label="Trending"><!-- cards injected --></div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section class="section container">
+      <div class="section-head reveal"><h2>Loved by thousands</h2></div>
+      <div class="reviews-grid" id="reviews"><!-- reviews injected --></div>
+    </section>
+
+    <!-- TRUST STRIP -->
+    <section class="trust">
+      <div class="container trust__row">
+        <span class="trust__item"><span class="trust__icon">●</span> 925 silver</span>
+        <span class="trust__item"><span class="trust__icon">●</span> Hallmarked</span>
+        <span class="trust__item"><span class="trust__icon">●</span> 30-day returns</span>
+        <span class="trust__item"><span class="trust__icon">●</span> Secure payments</span>
+      </div>
+    </section>
+
+    <!-- INSTAGRAM -->
+    <section class="section container">
+      <div class="section-head reveal"><h2>#ASCollections</h2>
+        <a class="section-head__link" href="https://instagram.com/" target="_blank" rel="noopener">Follow →</a>
+      </div>
+      <div class="ig-grid reveal" id="instagram"><!-- tiles injected --></div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section class="section container newsletter">
+      <div class="newsletter__inner reveal">
+        <h2>Join the list — 10% off your first order</h2>
+        <p>Early access to new pieces and the occasional love letter. No spam.</p>
+        <div class="newsletter__form">
+          <input class="input" type="email" id="newsletter-email" placeholder="you@email.com" aria-label="Email address" autocomplete="email" />
+          <button class="btn btn--primary" id="newsletter-submit">Subscribe</button>
+        </div>
+        <p class="newsletter__msg" id="newsletter-msg" role="status" aria-live="polite"></p>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div>
+          <span class="brand">AS Collections</span>
+          <p class="footer__brand-tag">Premium everyday jewellery in 925 silver, made to never come off.</p>
+        </div>
+        <div class="footer__col">
+          <h2 class="footer__col-title">Shop</h2>
+          <a href="/pages/shop.html?category=cat-rings">Rings</a>
+          <a href="/pages/shop.html?category=cat-necklaces">Necklaces</a>
+          <a href="/pages/shop.html?category=cat-earrings">Earrings</a>
+          <a href="/pages/shop.html?category=cat-bracelets">Bracelets</a>
+        </div>
+        <div class="footer__col">
+          <h2 class="footer__col-title">Help</h2>
+          <a href="#">Shipping & Returns</a>
+          <a href="#">Care Guide</a>
+          <a href="#">Track Order</a>
+          <a href="#">Contact</a>
+        </div>
+        <div class="footer__col">
+          <h2 class="footer__col-title">About</h2>
+          <a href="#">Our Story</a>
+          <a href="#">Hallmark & Quality</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms</a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2026 AS Collections. All rights reserved.</span>
+        <span class="footer__pay"><span>Razorpay</span><span>UPI</span><span>Visa</span><span>Mastercard</span></span>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

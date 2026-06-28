@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shop — AS Collections</title>
+  <meta name="description" content="Shop premium everyday jewellery in 925 silver — rings, necklaces, earrings and bracelets. Filter by category, price and availability." />
+  <link rel="canonical" href="https://ascollections.example/pages/shop.html" />
+  <meta name="theme-color" content="#7A2E2A" />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="AS Collections" />
+  <meta property="og:title" content="Shop — AS Collections" />
+  <meta property="og:url" content="https://ascollections.example/pages/shop.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="preload" href="/assets/fonts/fraunces-opsz.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/plus-jakarta-wght.woff2" as="font" type="font/woff2" crossorigin />
+
+  <link rel="stylesheet" href="/css/tokens.css" />
+  <link rel="stylesheet" href="/css/base.css" />
+  <link rel="stylesheet" href="/css/components/button.css" />
+  <link rel="stylesheet" href="/css/components/announcement-bar.css" />
+  <link rel="stylesheet" href="/css/components/header.css" />
+  <link rel="stylesheet" href="/css/components/product-card.css" />
+  <link rel="stylesheet" href="/css/components/plp.css" />
+  <link rel="stylesheet" href="/css/components/search-modal.css" />
+  <link rel="stylesheet" href="/css/components/quick-view.css" />
+  <link rel="stylesheet" href="/css/components/cart-drawer.css" />
+  <link rel="stylesheet" href="/css/components/trust.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ANNOUNCEMENT BAR -->
+  <div class="announce"><div class="announce__track" id="announce-track"></div></div>
+
+  <!-- HEADER (solid by default on inner pages) -->
+  <header class="header is-solid">
+    <div class="container header__inner">
+      <button class="icon-btn hamburger" id="hamburger" aria-label="Open menu" aria-controls="drawer" aria-expanded="false">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+      <a href="/" class="brand">AS Collections</a>
+      <nav class="nav" id="nav" aria-label="Primary"></nav>
+      <div class="header__icons">
+        <button class="icon-btn" aria-label="Search" data-search-open>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        </button>
+        <button class="icon-btn" aria-label="Wishlist">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s-7.5-4.6-10-9.2A5.4 5.4 0 0 1 12 6a5.4 5.4 0 0 1 10 5.8C19.5 16.4 12 21 12 21z"/></svg>
+          <span class="icon-btn__count" data-count="0">0</span>
+        </button>
+        <button class="icon-btn" aria-label="Cart">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 2 4 6v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6l-2-4z"/><path d="M4 6h16M9 10a3 3 0 0 0 6 0"/></svg>
+          <span class="icon-btn__count" data-count="0">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE DRAWER -->
+  <div class="drawer__backdrop" id="drawer-backdrop"></div>
+  <aside class="drawer" id="drawer" aria-hidden="true" aria-label="Menu" inert>
+    <button class="icon-btn drawer__close" id="drawer-close" aria-label="Close menu">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+    <nav id="drawer-nav" aria-label="Mobile"></nav>
+  </aside>
+
+  <main id="main">
+    <!-- PLP HEAD -->
+    <div class="container plp-head">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> › <span id="plp-crumb">Shop</span></nav>
+      <div class="plp-head__title">
+        <h1 id="plp-title">All jewellery</h1>
+        <span class="plp-head__count" id="plp-count"></span>
+      </div>
+    </div>
+
+    <div class="container">
+      <!-- TOOLBAR: filter button (mobile) + sort (always) -->
+      <div class="plp-toolbar">
+        <button class="btn btn--secondary plp-toolbar__filter" id="open-filters">Filters</button>
+        <div class="plp-toolbar__sort">
+          <label class="sort-label" for="sort">Sort</label>
+          <select class="select" id="sort" aria-label="Sort products"></select>
+        </div>
+      </div>
+
+      <div class="plp">
+        <!-- DESKTOP FILTER SIDEBAR -->
+        <aside class="plp-sidebar" aria-label="Filters">
+          <h2 class="sr-only">Filter products</h2>
+          <div id="filters"></div>
+          <button class="clear-all" id="clear-all">Clear all filters</button>
+        </aside>
+
+        <!-- GRID + STATES -->
+        <div>
+          <h2 class="sr-only">Products</h2>
+          <div class="plp-grid" id="grid" aria-label="Products"></div>
+
+          <div class="plp-empty" id="plp-empty" hidden>
+            <h3>Nothing matches those filters</h3>
+            <p>Try widening your price range or clearing a filter.</p>
+            <button class="btn btn--primary" id="clear-all-empty" onclick="document.getElementById('clear-all').click()">Clear filters</button>
+          </div>
+
+          <div class="load-more-wrap"><button class="btn btn--secondary" id="load-more" hidden>Load more</button></div>
+          <div id="sentinel" aria-hidden="true"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TRUST STRIP -->
+    <section class="trust">
+      <div class="container trust__row">
+        <span class="trust__item"><span class="trust__icon">●</span> 925 silver</span>
+        <span class="trust__item"><span class="trust__icon">●</span> Hallmarked</span>
+        <span class="trust__item"><span class="trust__icon">●</span> 30-day returns</span>
+        <span class="trust__item"><span class="trust__icon">●</span> Secure payments</span>
+      </div>
+    </section>
+  </main>
+
+  <!-- MOBILE FILTER BOTTOM-SHEET -->
+  <div class="sheet-backdrop" id="sheet-backdrop"></div>
+  <section class="filter-sheet" id="filter-sheet" aria-label="Filters" aria-hidden="true" inert>
+    <div class="filter-sheet__head">
+      <h2 class="filter-sheet__title">Filters</h2>
+      <span class="plp-head__count" id="sheet-count"></span>
+    </div>
+    <div id="filters-sheet"></div>
+    <div class="filter-sheet__actions">
+      <button class="btn btn--secondary" id="sheet-clear">Clear</button>
+      <button class="btn btn--primary" id="sheet-done">Show results</button>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__bottom">
+        <span>© 2026 AS Collections. All rights reserved.</span>
+        <span class="footer__pay"><span>Razorpay</span><span>UPI</span><span>Visa</span><span>Mastercard</span></span>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="/js/pages/shop.js"></script>
+</body>
+</html>

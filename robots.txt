@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /pages/checkout.html
+Disallow: /pages/order-confirmation.html
+
+Sitemap: https://www.ascollections.com/sitemap.xml

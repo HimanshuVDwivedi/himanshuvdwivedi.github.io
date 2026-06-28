@@ -1,0 +1,79 @@
+/* =============================================================================
+   AS COLLECTIONS — TRUST / INSTAGRAM / NEWSLETTER / FOOTER
+   Grouped here as they're all simple band-style sections.
+   ============================================================================= */
+
+/* ---- Trust strip ---------------------------------------------------------- */
+.trust { border-block: 1px solid var(--c-line); background: var(--c-surface-2); }
+.trust__row {
+  display: flex; flex-wrap: wrap; justify-content: center;
+  gap: var(--s-5) var(--s-7);
+  padding-block: var(--s-6);
+}
+.trust__item {
+  display: flex; align-items: center; gap: var(--s-2);
+  font-size: var(--t-small); color: var(--c-ink-soft);
+}
+.trust__icon { color: var(--c-metal); }
+
+/* ---- Instagram feed ------------------------------------------------------- */
+.ig-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--s-3);
+}
+@media (min-width: 640px) { .ig-grid { grid-template-columns: repeat(5, 1fr); } }
+.ig-tile {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--r-sm);
+  overflow: hidden;
+  display: grid; place-items: center;
+  background: var(--c-surface-2);
+  border: 1px solid var(--c-line);
+  color: var(--c-ink-soft);
+}
+.ig-tile:hover { color: var(--c-accent); }
+.ig-tile svg { width: 28px; height: 28px; }
+
+/* ---- Newsletter ----------------------------------------------------------- */
+.newsletter { text-align: center; }
+.newsletter__inner { max-width: 560px; margin-inline: auto; }
+.newsletter__form { display: flex; gap: var(--s-3); margin-top: var(--s-5); }
+@media (max-width: 520px) { .newsletter__form { flex-direction: column; } }
+.input {
+  flex: 1;
+  min-height: 44px;
+  padding: var(--s-3) var(--s-4);
+  border: 1px solid var(--c-line);
+  border-radius: var(--r-sm);
+  background: var(--c-surface-2);
+  transition: border-color var(--dur-fast) var(--ease);
+}
+.input:focus { outline: none; border-color: var(--c-accent); }
+.input.is-invalid { border-color: var(--c-danger); }
+.newsletter__msg { min-height: 1.4em; margin-top: var(--s-3); font-size: var(--t-small); }
+.newsletter__msg.is-error { color: var(--c-danger); }
+.newsletter__msg.is-success { color: var(--c-success); }
+
+/* ---- Footer --------------------------------------------------------------- */
+.footer { background: var(--c-ink); color: var(--c-surface); margin-top: var(--s-9); }
+.footer__top {
+  display: grid; gap: var(--s-7);
+  grid-template-columns: 1fr;
+  padding-block: var(--s-8);
+}
+@media (min-width: 720px) { .footer__top { grid-template-columns: 1.4fr 1fr 1fr 1fr; } }
+.footer__brand-tag { color: rgba(245, 242, 239, 0.7); margin-top: var(--s-3); max-width: 30ch; }
+.footer__col h4 { font-family: var(--font-body); font-size: var(--t-small); text-transform: uppercase; letter-spacing: var(--track-eyebrow); color: var(--c-metal); margin-bottom: var(--s-4); }
+.footer__col a { display: block; color: rgba(245, 242, 239, 0.82); padding-block: 6px; }
+.footer__col a:hover { color: var(--c-surface); }
+.footer__bottom {
+  border-top: 1px solid rgba(245, 242, 239, 0.12);
+  padding-block: var(--s-5);
+  display: flex; flex-wrap: wrap; gap: var(--s-4);
+  align-items: center; justify-content: space-between;
+  font-size: var(--t-small); color: rgba(245, 242, 239, 0.6);
+}
+.footer__pay { display: flex; gap: var(--s-2); align-items: center; }
+.footer__pay span { border: 1px solid rgba(245,242,239,0.25); border-radius: 4px; padding: 2px 8px; font-size: 11px; letter-spacing: 0.04em; }

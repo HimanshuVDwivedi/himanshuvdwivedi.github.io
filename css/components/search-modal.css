@@ -1,0 +1,42 @@
+/* =============================================================================
+   AS COLLECTIONS — SEARCH MODAL
+   Full-screen frosted overlay anchored near the top; live results below the bar.
+   ============================================================================= */
+
+.search {
+  position: fixed; inset: 0;
+  z-index: var(--z-modal);
+  background: rgba(28, 26, 25, 0.35);
+  -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+  opacity: 0; pointer-events: none;
+  transition: opacity var(--dur) var(--ease);
+  display: flex; justify-content: center;
+  padding: var(--s-7) var(--s-4) 0;
+}
+.search.is-open { opacity: 1; pointer-events: auto; }
+
+.search__panel {
+  width: 100%; max-width: 640px; height: fit-content;
+  background: var(--c-surface);
+  border-radius: var(--r-md);
+  box-shadow: var(--e-3);
+  overflow: hidden;
+  transform: translateY(-8px);
+  transition: transform var(--dur) var(--ease);
+}
+.search.is-open .search__panel { transform: none; }
+
+.search__bar { display: flex; align-items: center; gap: var(--s-3); padding: var(--s-4) var(--s-5); border-bottom: 1px solid var(--c-line); }
+.search__icon { width: 20px; height: 20px; color: var(--c-ink-soft); flex: none; }
+.search__input { flex: 1; border: none; background: none; font-size: 1.125rem; }
+.search__input:focus { outline: none; }
+.search__close { width: 36px; height: 36px; color: var(--c-ink-soft); border-radius: var(--r-pill); }
+.search__close:hover { color: var(--c-accent); background: rgba(28,26,25,0.04); }
+
+.search__results { max-height: 60vh; overflow-y: auto; }
+.search__result { display: flex; align-items: center; gap: var(--s-4); padding: var(--s-3) var(--s-5); transition: background var(--dur-fast) var(--ease); }
+.search__result:hover { background: var(--c-surface-2); }
+.search__thumb { width: 48px; height: 48px; object-fit: cover; border: 1px solid var(--c-line); border-radius: var(--r-sm); flex: none; }
+.search__result-title { flex: 1; font-weight: 600; }
+.search__result-price { color: var(--c-ink-soft); font-size: var(--t-small); }
+.search__empty { padding: var(--s-6) var(--s-5); color: var(--c-ink-soft); }

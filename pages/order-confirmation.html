@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Order confirmed — AS Collections</title>
+  <meta name="robots" content="noindex" />
+
+  <link rel="preload" href="/assets/fonts/fraunces-opsz.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/plus-jakarta-wght.woff2" as="font" type="font/woff2" crossorigin />
+
+  <link rel="stylesheet" href="/css/tokens.css" />
+  <link rel="stylesheet" href="/css/base.css" />
+  <link rel="stylesheet" href="/css/components/button.css" />
+  <link rel="stylesheet" href="/css/components/checkout.css" />
+</head>
+<body>
+  <header class="checkout-header">
+    <div class="container checkout-header__inner">
+      <a href="/" class="brand">AS Collections</a>
+      <span class="checkout-header__secure">Secure checkout</span>
+    </div>
+  </header>
+
+  <main>
+    <div class="container confirm">
+      <div class="confirm__check" aria-hidden="true">✓</div>
+      <h1>Thank you — your order is confirmed</h1>
+      <p>Order <span class="confirm__id" id="confirm-id">—</span>. A confirmation has been sent to
+        <span id="confirm-email">your email</span>.</p>
+
+      <div class="confirm__card" id="confirm-detail">
+        <h2 style="font-size:var(--t-h3);margin-bottom:var(--s-3)">Order details</h2>
+        <div id="confirm-items"></div>
+        <div id="confirm-totals" style="margin-top:var(--s-3)"></div>
+        <p style="margin-top:var(--s-4);color:var(--c-ink-soft);font-size:var(--t-small)">
+          Shipping to: <span id="confirm-address"></span></p>
+      </div>
+
+      <a class="btn btn--primary" href="/pages/shop.html">Continue shopping</a>
+    </div>
+  </main>
+
+  <script type="module" src="/js/pages/confirmation.js"></script>
+</body>
+</html>

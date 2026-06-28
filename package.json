@@ -1,0 +1,14 @@
+{
+  "name": "as-collections",
+  "version": "1.0.0",
+  "private": true,
+  "description": "AS Collections \u2014 premium jewellery storefront (static + Apps Script).",
+  "type": "module",
+  "scripts": {
+    "build": "node build/build.mjs",
+    "healthcheck": "node scripts/healthcheck.mjs"
+  },
+  "devDependencies": {
+    "esbuild": "^0.21.5"
+  }
+}

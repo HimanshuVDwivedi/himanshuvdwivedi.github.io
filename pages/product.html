@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product — AS Collections</title>
+  <meta name="description" content="Premium everyday jewellery in 925 silver from AS Collections." />
+
+  <link rel="preload" href="/assets/fonts/fraunces-opsz.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/plus-jakarta-wght.woff2" as="font" type="font/woff2" crossorigin />
+
+  <link rel="stylesheet" href="/css/tokens.css" />
+  <link rel="stylesheet" href="/css/base.css" />
+  <link rel="stylesheet" href="/css/components/button.css" />
+  <link rel="stylesheet" href="/css/components/announcement-bar.css" />
+  <link rel="stylesheet" href="/css/components/header.css" />
+  <link rel="stylesheet" href="/css/components/product-card.css" />
+  <link rel="stylesheet" href="/css/components/pdp.css" />
+  <link rel="stylesheet" href="/css/components/quick-view.css" />
+  <link rel="stylesheet" href="/css/components/cart-drawer.css" />
+  <link rel="stylesheet" href="/css/components/search-modal.css" />
+  <link rel="stylesheet" href="/css/components/reviews.css" />
+  <link rel="stylesheet" href="/css/components/trust.css" />
+  <link rel="stylesheet" href="/css/components/section.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="announce"><div class="announce__track" id="announce-track"></div></div>
+
+  <header class="header is-solid">
+    <div class="container header__inner">
+      <button class="icon-btn hamburger" id="hamburger" aria-label="Open menu" aria-controls="drawer" aria-expanded="false">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+      <a href="/" class="brand">AS Collections</a>
+      <nav class="nav" id="nav" aria-label="Primary"></nav>
+      <div class="header__icons">
+        <button class="icon-btn" aria-label="Search" data-search-open>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        </button>
+        <button class="icon-btn" aria-label="Wishlist">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s-7.5-4.6-10-9.2A5.4 5.4 0 0 1 12 6a5.4 5.4 0 0 1 10 5.8C19.5 16.4 12 21 12 21z"/></svg>
+          <span class="icon-btn__count" data-count="0">0</span>
+        </button>
+        <button class="icon-btn" aria-label="Cart">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 2 4 6v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6l-2-4z"/><path d="M4 6h16M9 10a3 3 0 0 0 6 0"/></svg>
+          <span class="icon-btn__count" data-count="0">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="drawer__backdrop" id="drawer-backdrop"></div>
+  <aside class="drawer" id="drawer" aria-hidden="true" aria-label="Menu" inert>
+    <button class="icon-btn drawer__close" id="drawer-close" aria-label="Close menu">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+    <nav id="drawer-nav" aria-label="Mobile"></nav>
+  </aside>
+
+  <main id="main">
+    <div id="pdp">
+      <div class="container" id="breadcrumb" style="padding-top:var(--s-5)"></div>
+
+      <div class="container pdp">
+        <div id="gallery"></div>
+        <div class="buy" id="buy"></div>
+      </div>
+
+      <div class="container pdp-details">
+        <div id="accordions"></div>
+      </div>
+
+      <section class="container section">
+        <div class="section-head"><h2>Reviews</h2></div>
+        <div id="reviews"></div>
+      </section>
+
+      <section class="container section" id="related-section">
+        <div class="section-head"><h2>You may also like</h2></div>
+        <div class="rail" id="related" aria-label="Related products"></div>
+      </section>
+
+      <section class="container section" id="recent-section">
+        <div class="section-head"><h2>Recently viewed</h2></div>
+        <div class="rail" id="recent" aria-label="Recently viewed"></div>
+      </section>
+    </div>
+
+    <!-- Not found -->
+    <div class="container pdp-notfound" id="pdp-notfound" hidden>
+      <h1>Piece not found</h1>
+      <p>This product may have sold out or moved.</p>
+      <a class="btn btn--primary" href="/pages/shop.html">Back to shop</a>
+    </div>
+  </main>
+
+  <!-- Mobile sticky add-to-cart -->
+  <div class="sticky-add">
+    <span class="sticky-add__price" id="sticky-price"></span>
+    <button class="btn btn--primary" id="sticky-add">Add to cart</button>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__bottom">
+        <span>© 2026 AS Collections. All rights reserved.</span>
+        <span class="footer__pay"><span>Razorpay</span><span>UPI</span><span>Visa</span><span>Mastercard</span></span>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="/js/pages/product.js"></script>
+</body>
+</html>

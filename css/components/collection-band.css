@@ -1,0 +1,33 @@
+/* =============================================================================
+   AS COLLECTIONS — COLLECTION BAND
+   A full-bleed editorial moment between rails. Uses the reserved dark "Vitrine"
+   treatment (ink ground) so product/brand copy glows — used sparingly, once.
+   ============================================================================= */
+
+.band {
+  background: var(--c-ink);
+  color: var(--c-surface);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  display: grid;
+  gap: var(--s-6);
+  align-items: center;
+  padding: var(--s-8);
+  text-align: center;
+}
+@media (min-width: 800px) {
+  .band { grid-template-columns: 1.1fr 0.9fr; text-align: left; padding: var(--s-9); }
+}
+.band__eyebrow { color: var(--c-metal); margin-bottom: var(--s-4); }
+.band__title { font-size: var(--t-h2); margin-bottom: var(--s-4); color: var(--c-surface); }
+.band__text { color: rgba(245, 242, 239, 0.78); margin-bottom: var(--s-6); }
+.band__art {                 /* placeholder visual; swap for collection photo */
+  aspect-ratio: 4 / 3;
+  border-radius: var(--r-md);
+  border: 1px solid rgba(201, 168, 106, 0.35);
+  background:
+    radial-gradient(70% 70% at 50% 35%, rgba(201,168,106,0.18), transparent 70%),
+    #211f1d;
+  display: grid; place-items: center;
+}
+.band__art-mark { font-family: var(--font-display); color: var(--c-metal); letter-spacing: 0.1em; }

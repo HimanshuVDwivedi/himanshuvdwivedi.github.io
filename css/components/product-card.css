@@ -1,0 +1,87 @@
+/* =============================================================================
+   AS COLLECTIONS — PRODUCT CARD
+   Reused by: home rails, PLP grid, related, recently-viewed, wishlist.
+   Square image = consistent "luxury grid". Fixed aspect ratio = zero CLS.
+   ============================================================================= */
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+}
+
+/* Square media well — radius 0 keeps product photography honest. */
+.card__media {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: var(--c-surface-2);
+  border: 1px solid var(--c-line);
+}
+.card__media-link { display: block; width: 100%; height: 100%; }
+.card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--dur-slow) var(--ease);
+}
+.card:hover .card__img { transform: scale(1.04); }   /* subtle hover zoom */
+
+/* Quick View — appears on hover, bottom of the media well */
+.card__quickview {
+  position: absolute;
+  left: var(--s-3); right: var(--s-3); bottom: var(--s-3);
+  padding: var(--s-2) var(--s-3);
+  background: var(--c-glass);
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  border: 1px solid var(--c-glass-line);
+  border-radius: var(--r-sm);
+  font-size: var(--t-small); font-weight: 600; color: var(--c-ink);
+  opacity: 0; transform: translateY(6px);
+  transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease), background var(--dur-fast) var(--ease);
+}
+.card:hover .card__quickview, .card__quickview:focus-visible { opacity: 1; transform: none; }
+.card__quickview:hover { background: rgba(255, 255, 255, 0.8); }
+@media (hover: none) { .card__quickview { display: none; } }  /* touch: tap the card */
+
+/* Badge — top-left. Sale = oxblood (the one saturated colour). Sold-out muted. */
+.card__badge {
+  position: absolute;
+  top: var(--s-3); left: var(--s-3);
+  font-size: var(--t-eyebrow);
+  letter-spacing: var(--track-eyebrow);
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 4px var(--s-2);
+  border-radius: var(--r-sm);
+  background: var(--c-accent);
+  color: var(--c-surface);
+}
+.card__badge--soldout { background: var(--c-ink-soft); }
+
+/* Wishlist heart — top-right. (Wired to state in M5; visual here.) */
+.card__wish {
+  position: absolute;
+  top: var(--s-3); right: var(--s-3);
+  width: 38px; height: 38px;
+  display: grid; place-items: center;
+  border-radius: var(--r-pill);
+  background: var(--c-glass);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  color: var(--c-ink);
+  transition: transform var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
+}
+.card__wish:hover { transform: scale(1.08); color: var(--c-accent); }
+
+/* Body */
+.card__title { font-family: var(--font-body); font-weight: 600; font-size: var(--t-body); line-height: var(--lh-snug); }
+.card__rating { font-size: var(--t-small); color: var(--c-ink-soft); display: flex; align-items: center; gap: 4px; }
+.card__star { color: var(--c-metal); }
+
+/* Price — anchored: new price prominent, old struck, discount in oxblood. */
+.card__price { display: flex; align-items: baseline; gap: var(--s-2); }
+.card__price-now { font-weight: 700; }
+.card__price-old { color: var(--c-ink-soft); text-decoration: line-through; font-size: var(--t-small); }
+.card__price-off { color: var(--c-accent); font-size: var(--t-small); font-weight: 700; }

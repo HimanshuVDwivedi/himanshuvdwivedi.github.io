@@ -1,0 +1,115 @@
+/* =============================================================================
+   AS COLLECTIONS — HEADER
+   Sticky. Transparent over the hero, solid (frosted + hairline) once scrolled.
+   Desktop: inline nav + utility icons. Mobile: hamburger → off-canvas drawer.
+   ============================================================================= */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-header);
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition: background var(--dur) var(--ease), border-color var(--dur) var(--ease);
+}
+/* Solid state, toggled by header.js when scrolled past the threshold. */
+.header.is-solid {
+  background: color-mix(in srgb, var(--c-surface) 88%, transparent);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-bottom-color: var(--c-line);
+}
+
+.header__inner {
+  height: var(--header-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-5);
+}
+
+.brand {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+/* Desktop nav */
+.nav { display: none; gap: var(--s-6); }
+.nav__link {
+  font-size: var(--t-small);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  position: relative;
+  padding-block: var(--s-2);
+}
+.nav__link::after {            /* champagne underline grows on hover */
+  content: "";
+  position: absolute; left: 0; bottom: 0;
+  width: 100%; height: 1px;
+  background: var(--c-metal);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform var(--dur) var(--ease);
+}
+.nav__link:hover::after { transform: scaleX(1); }
+
+/* Utility icons (search / wishlist / cart) */
+.header__icons { display: flex; align-items: center; gap: var(--s-3); }
+.icon-btn {
+  width: 44px; height: 44px;
+  display: grid; place-items: center;
+  color: var(--c-ink);
+  border-radius: var(--r-pill);
+  transition: color var(--dur-fast) var(--ease), background var(--dur-fast) var(--ease);
+  position: relative;
+}
+.icon-btn:hover { color: var(--c-accent); background: rgba(28, 26, 25, 0.04); }
+.icon-btn__count {              /* cart/wishlist badge (wired in M5) */
+  position: absolute; top: 4px; right: 4px;
+  min-width: 18px; height: 18px; padding: 0 4px;
+  background: var(--c-accent); color: var(--c-surface);
+  font-size: 11px; font-weight: 700;
+  border-radius: var(--r-pill);
+  display: grid; place-items: center;
+}
+.icon-btn__count[data-count="0"] { display: none; }
+
+.hamburger { display: grid; }   /* hidden on desktop via media query */
+
+/* ---- Mobile drawer -------------------------------------------------------- */
+.drawer {
+  position: fixed; inset: 0 30% 0 0;
+  max-width: 360px;
+  background: var(--c-surface);
+  z-index: var(--z-drawer);
+  transform: translateX(-100%);
+  transition: transform var(--dur) var(--ease);
+  padding: var(--s-6) var(--s-5);
+  display: flex; flex-direction: column; gap: var(--s-5);
+  box-shadow: var(--e-3);
+}
+.drawer.is-open { transform: translateX(0); }
+.drawer__backdrop {
+  position: fixed; inset: 0;
+  background: rgba(28, 26, 25, 0.4);
+  opacity: 0; pointer-events: none;
+  transition: opacity var(--dur) var(--ease);
+  z-index: var(--z-drawer);
+}
+.drawer__backdrop.is-open { opacity: 1; pointer-events: auto; }
+.drawer__link {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  padding-block: var(--s-2);
+  border-bottom: 1px solid var(--c-line);
+}
+.drawer__close { align-self: flex-end; }
+
+/* ---- Desktop breakpoint --------------------------------------------------- */
+@media (min-width: 900px) {
+  .nav { display: flex; }
+  .hamburger { display: none; }
+}

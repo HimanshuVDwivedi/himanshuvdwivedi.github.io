@@ -1,0 +1,26 @@
+/* =============================================================================
+   AS COLLECTIONS — ANNOUNCEMENT BAR
+   Slim ink bar at the very top. Messages crossfade on a timer (announcement-bar.js).
+   ============================================================================= */
+
+.announce {
+  background: var(--c-ink);
+  color: var(--c-surface);
+  text-align: center;
+  font-size: var(--t-small);
+  letter-spacing: 0.02em;
+  height: 36px;
+  position: relative;
+  overflow: hidden;
+}
+.announce__track { position: relative; height: 100%; }
+.announce__item {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  opacity: 0;
+  transition: opacity var(--dur) var(--ease);
+  padding-inline: var(--s-4);
+}
+.announce__item.is-active { opacity: 1; }

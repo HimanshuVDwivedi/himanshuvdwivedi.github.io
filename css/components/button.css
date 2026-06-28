@@ -1,0 +1,46 @@
+/* =============================================================================
+   AS COLLECTIONS — BUTTONS
+   Primary owns the one saturated colour (oxblood). Secondary = ink outline.
+   Min height 44px = comfortable tap target (Fitts's Law / a11y).
+   ============================================================================= */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s-2);
+  min-height: 44px;
+  padding: var(--s-3) var(--s-6);
+  border-radius: var(--r-sm);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: var(--t-body);
+  line-height: 1;
+  border: 1px solid transparent;
+  transition: transform var(--dur-fast) var(--ease),
+              background var(--dur-fast) var(--ease),
+              border-color var(--dur-fast) var(--ease),
+              color var(--dur-fast) var(--ease);
+}
+.btn:active { transform: scale(0.98); }
+
+.btn--primary { background: var(--c-accent); color: var(--c-surface); }
+.btn--primary:hover { background: var(--c-accent-hover); }
+
+.btn--secondary { background: transparent; color: var(--c-ink); border-color: var(--c-ink); }
+.btn--secondary:hover { background: var(--c-ink); color: var(--c-surface); }
+
+.btn--ghost { background: transparent; color: var(--c-ink); }
+.btn--ghost:hover { color: var(--c-accent); }
+
+.btn--block { width: 100%; }
+
+/* Glassmorphism CTA — frosted glass + champagne hairline (hero) */
+.btn--glass {
+  background: var(--c-glass);
+  border-color: var(--c-glass-line);
+  color: var(--c-ink);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+.btn--glass:hover { background: rgba(255, 255, 255, 0.72); transform: translateY(-2px); }

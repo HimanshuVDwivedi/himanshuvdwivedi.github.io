@@ -1,0 +1,42 @@
+/* =============================================================================
+   AS COLLECTIONS — CATEGORY CARD
+   The four "big doors" before product rails (navigation-first for new visitors).
+   Tall portrait tiles with a name overlaid on a soft gradient scrim.
+   ============================================================================= */
+
+.cat-grid {
+  display: grid;
+  gap: var(--s-4);
+  grid-template-columns: repeat(2, 1fr);
+}
+@media (min-width: 760px) {
+  .cat-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+.cat-card {
+  position: relative;
+  display: block;
+  aspect-ratio: 3 / 4;
+  border-radius: var(--r-md);
+  overflow: hidden;
+  background: var(--c-surface-2);
+  border: 1px solid var(--c-line);
+}
+.cat-card__img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform var(--dur-slow) var(--ease);
+}
+.cat-card:hover .cat-card__img { transform: scale(1.05); }
+
+.cat-card__scrim {            /* gradient so the label is always legible */
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 45%, rgba(28, 26, 25, 0.55) 100%);
+}
+.cat-card__label {
+  position: absolute; left: var(--s-4); bottom: var(--s-4);
+  color: var(--c-surface);
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  letter-spacing: 0.02em;
+}

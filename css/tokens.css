@@ -1,0 +1,105 @@
+/* =============================================================================
+   AS COLLECTIONS — DESIGN TOKENS
+   The single source of truth for the visual system.
+   Every colour, size, and timing in the app references a variable from here.
+   Nothing downstream hard-codes a hex value or a pixel timing.
+   Reference: SDLC Part 1, §8 (Design System).
+   ============================================================================= */
+
+/* ---- Self-hosted variable fonts -------------------------------------------
+   Display = Fraunces (optical-sizing axis → distinctive at large sizes).
+   Body/UI = Plus Jakarta Sans (clean, legible at small sizes).
+   font-display: swap keeps text visible during load (protects LCP/CLS).      */
+@font-face {
+  font-family: "Fraunces";
+  src: url("../assets/fonts/fraunces-opsz.woff2") format("woff2");
+  font-weight: 100 900;          /* variable weight range */
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("../assets/fonts/plus-jakarta-wght.woff2") format("woff2");
+  font-weight: 200 800;          /* variable weight range */
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* ---- COLOUR ------------------------------------------------------------
+     Materials-led palette (porcelain / oxblood / champagne / ink).
+     Deliberately NOT the generic cream+terracotta "AI luxury" default.
+     RULE: only ONE saturated colour on screen at a time (Von Restorff) —
+     oxblood owns the primary action; champagne is a metallic accent only.  */
+  --c-surface:      #F5F2EF;   /* page base — warm porcelain */
+  --c-surface-2:    #FBFAF8;   /* raised / card surface */
+  --c-ink:          #1C1A19;   /* primary text — warm near-black */
+  --c-ink-soft:     #6B6460;   /* secondary text */
+  --c-line:         #E6E0DA;   /* hairline borders / dividers */
+  --c-accent:       #7A2E2A;   /* OXBLOOD — primary CTA, sale emphasis */
+  --c-accent-hover: #682522;   /* oxblood pressed/hover */
+  --c-accent-soft:  #B8918A;   /* muted rose — subtle hovers/fills */
+  --c-metal:        #C9A86A;   /* CHAMPAGNE GOLD — thin rules, accents only */
+  --c-success:      #3F6B53;   /* in-stock / confirmation */
+  --c-danger:       #9B2C2C;   /* errors */
+  --c-glass:        rgba(255, 255, 255, 0.55); /* glassmorphism CTA over hero */
+  --c-glass-line:   rgba(201, 168, 106, 0.45); /* champagne hairline on glass */
+
+  /* ---- TYPOGRAPHY -------------------------------------------------------- */
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-body:    "Plus Jakarta Sans", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+
+  /* Type scale — 1.250 major third, fluid via clamp(min, vw, max) */
+  --t-display:  clamp(2.5rem, 6vw, 4.5rem);   /* hero */
+  --t-h1:       clamp(2rem, 4vw, 3rem);        /* page title */
+  --t-h2:       clamp(1.5rem, 3vw, 2.25rem);   /* section */
+  --t-h3:       1.5rem;                         /* card group / PDP title */
+  --t-body:     1rem;                           /* body */
+  --t-small:    0.875rem;                       /* captions, meta */
+  --t-eyebrow:  0.75rem;                        /* labels, badges (uppercase) */
+
+  --lh-tight:   1.05;   /* display headings */
+  --lh-snug:    1.25;   /* sub-headings */
+  --lh-body:    1.6;    /* paragraphs */
+  --track-eyebrow: 0.12em;  /* letter-spacing for eyebrows/labels */
+
+  /* ---- SPACING — 4px base scale ----------------------------------------- */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 24px;
+  --s-6: 32px;
+  --s-7: 48px;
+  --s-8: 64px;
+  --s-9: 96px;
+
+  /* ---- LAYOUT ------------------------------------------------------------ */
+  --container-max: 1280px;   /* max content width */
+  --gutter:        var(--s-5);
+  --header-h:      72px;
+
+  /* ---- RADIUS ------------------------------------------------------------ */
+  --r-sm:   6px;     /* buttons, inputs (couture, not "app") */
+  --r-md:   12px;    /* cards, panels */
+  --r-lg:   20px;    /* large surfaces */
+  --r-pill: 999px;   /* chips */
+  /* NOTE: product images use radius 0 — keep photography honest. */
+
+  /* ---- ELEVATION — soft, low-spread, warm-tinted (luxury = subtle) ------ */
+  --e-1: 0 1px 2px rgba(28, 26, 25, 0.05);
+  --e-2: 0 4px 16px rgba(28, 26, 25, 0.07);
+  --e-3: 0 12px 40px rgba(28, 26, 25, 0.10);
+
+  /* ---- MOTION — slow, eased, sparse ------------------------------------- */
+  --ease:      cubic-bezier(0.22, 0.61, 0.36, 1);  /* gentle ease-out */
+  --dur-fast:  180ms;
+  --dur:       320ms;
+  --dur-slow:  560ms;
+
+  /* ---- Z-INDEX layering -------------------------------------------------- */
+  --z-header:   100;
+  --z-drawer:   200;
+  --z-modal:    300;
+  --z-toast:    400;
+}

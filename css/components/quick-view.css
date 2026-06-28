@@ -1,0 +1,45 @@
+/* =============================================================================
+   AS COLLECTIONS — QUICK VIEW + TOAST
+   ============================================================================= */
+
+/* ---- Quick View ----------------------------------------------------------- */
+.qv {
+  position: fixed; inset: 0; z-index: var(--z-modal);
+  background: rgba(28, 26, 25, 0.4);
+  -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+  display: grid; place-items: center; padding: var(--s-4);
+  opacity: 0; pointer-events: none; transition: opacity var(--dur) var(--ease);
+}
+.qv.is-open { opacity: 1; pointer-events: auto; }
+.qv__panel {
+  position: relative;
+  width: 100%; max-width: 860px; max-height: 90vh; overflow-y: auto;
+  background: var(--c-surface); border-radius: var(--r-md); box-shadow: var(--e-3);
+  transform: translateY(8px); transition: transform var(--dur) var(--ease);
+}
+.qv.is-open .qv__panel { transform: none; }
+.qv__close { position: absolute; top: var(--s-3); right: var(--s-3); z-index: 1; width: 40px; height: 40px; border-radius: var(--r-pill); background: var(--c-surface); color: var(--c-ink); box-shadow: var(--e-1); }
+.qv__close:hover { color: var(--c-accent); }
+.qv__body { display: grid; gap: var(--s-5); padding: var(--s-5); }
+@media (min-width: 720px) { .qv__body { grid-template-columns: 1fr 1fr; gap: var(--s-6); padding: var(--s-6); } }
+.qv__title { font-size: var(--t-h2); margin-bottom: var(--s-3); }
+.qv__price { margin-bottom: var(--s-4); }
+.qv__qty { margin: var(--s-4) 0; }
+.qv__link { display: inline-block; margin-top: var(--s-4); font-size: var(--t-small); font-weight: 600; color: var(--c-ink-soft); }
+.qv__link:hover { color: var(--c-accent); }
+.qv__error { padding: var(--s-7); }
+
+/* ---- Toast ---------------------------------------------------------------- */
+.toast-host {
+  position: fixed; left: 50%; bottom: var(--s-7); transform: translateX(-50%);
+  z-index: var(--z-toast); display: flex; flex-direction: column; gap: var(--s-2);
+  pointer-events: none;
+}
+.toast {
+  background: var(--c-ink); color: var(--c-surface);
+  padding: var(--s-3) var(--s-5); border-radius: var(--r-pill);
+  font-size: var(--t-small); font-weight: 600; box-shadow: var(--e-3);
+  opacity: 0; transform: translateY(10px);
+  transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+.toast.is-in { opacity: 1; transform: none; }

@@ -1,0 +1,22 @@
+/* =============================================================================
+   AS COLLECTIONS — SECTION SCAFFOLD
+   Shared bits used across homepage sections (heads, "view all" links).
+   ============================================================================= */
+
+.section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--s-4);
+  margin-bottom: var(--s-6);
+}
+.section-head__link {
+  font-size: var(--t-eyebrow);
+  letter-spacing: var(--track-eyebrow);
+  text-transform: uppercase;
+  color: var(--c-ink-soft);
+  font-weight: 600;
+  white-space: nowrap;
+  transition: color var(--dur-fast) var(--ease);
+}
+.section-head__link:hover { color: var(--c-accent); }

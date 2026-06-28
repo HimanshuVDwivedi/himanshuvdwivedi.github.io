@@ -1,0 +1,77 @@
+/* =============================================================================
+   AS COLLECTIONS — CART DRAWER
+   Right off-canvas. Header / scrollable body / pinned foot (totals + checkout).
+   ============================================================================= */
+
+.cart-backdrop {
+  position: fixed; inset: 0; background: rgba(28, 26, 25, 0.4);
+  opacity: 0; pointer-events: none; transition: opacity var(--dur) var(--ease);
+  z-index: var(--z-drawer);
+}
+.cart-backdrop.is-open { opacity: 1; pointer-events: auto; }
+
+.cart-drawer {
+  position: fixed; top: 0; right: 0; bottom: 0;
+  width: 100%; max-width: 420px;
+  background: var(--c-surface);
+  z-index: var(--z-drawer);
+  transform: translateX(100%);
+  transition: transform var(--dur) var(--ease);
+  display: flex; flex-direction: column;
+  box-shadow: var(--e-3);
+}
+.cart-drawer.is-open { transform: translateX(0); }
+
+.cart-drawer__head {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: var(--s-4) var(--s-5); border-bottom: 1px solid var(--c-line);
+}
+.cart-drawer__title { font-family: var(--font-display); font-size: 1.25rem; }
+
+.cart-drawer__body { flex: 1; overflow-y: auto; padding: var(--s-4) var(--s-5); }
+
+.cart-empty { text-align: center; padding: var(--s-8) var(--s-4); display: flex; flex-direction: column; gap: var(--s-5); align-items: center; color: var(--c-ink-soft); }
+
+/* ---- Line item ------------------------------------------------------------ */
+.cart-line { display: flex; gap: var(--s-4); padding: var(--s-4) 0; border-bottom: 1px solid var(--c-line); }
+.cart-line__media { flex: none; }
+.cart-line__img { width: 72px; height: 72px; object-fit: cover; border: 1px solid var(--c-line); border-radius: var(--r-sm); }
+.cart-line__info { flex: 1; display: flex; flex-direction: column; gap: 4px; }
+.cart-line__title { font-weight: 600; }
+.cart-line__option { font-size: var(--t-small); color: var(--c-ink-soft); }
+.cart-line__price { font-weight: 700; }
+.cart-line__controls { display: flex; align-items: center; justify-content: space-between; margin-top: var(--s-2); }
+.cart-line__remove { font-size: var(--t-small); color: var(--c-ink-soft); text-decoration: underline; }
+.cart-line__remove:hover { color: var(--c-accent); }
+.qty--sm .qty__btn { width: 32px; height: 36px; }
+.qty--sm .qty__value { min-width: 32px; }
+
+/* ---- Foot ----------------------------------------------------------------- */
+.cart-drawer__foot { border-top: 1px solid var(--c-line); padding: var(--s-4) var(--s-5) calc(var(--s-4) + env(safe-area-inset-bottom)); display: flex; flex-direction: column; gap: var(--s-4); }
+
+/* Progress */
+.cart-progress__msg { font-size: var(--t-small); color: var(--c-ink-soft); margin-bottom: var(--s-2); }
+.cart-progress__track { height: 6px; background: var(--c-line); border-radius: var(--r-pill); overflow: hidden; }
+.cart-progress__fill { display: block; height: 100%; width: 0; background: var(--c-metal); transition: width var(--dur) var(--ease); }
+
+/* Coupon */
+.cart-coupon__row { display: flex; gap: var(--s-2); }
+.cart-coupon__input { flex: 1; }
+.cart-coupon__btn { flex: none; }
+.cart-coupon__msg { font-size: var(--t-small); min-height: 1.1em; margin-top: 4px; }
+.cart-coupon__msg.is-error { color: var(--c-danger); }
+.cart-coupon__applied { display: flex; align-items: center; justify-content: space-between; gap: var(--s-3); padding: var(--s-2) var(--s-3); background: var(--c-surface-2); border: 1px dashed var(--c-metal); border-radius: var(--r-sm); }
+.cart-coupon__code { font-weight: 600; font-size: var(--t-small); }
+.cart-coupon__remove { color: var(--c-ink-soft); }
+.cart-coupon__remove:hover { color: var(--c-accent); }
+
+/* Gift note */
+.cart-gift__toggle { font-size: var(--t-small); color: var(--c-ink-soft); text-decoration: underline; align-self: flex-start; }
+.cart-gift__toggle:hover { color: var(--c-accent); }
+.cart-gift__area { width: 100%; margin-top: var(--s-2); resize: vertical; }
+
+/* Summary */
+.cart-sum { display: flex; flex-direction: column; gap: var(--s-2); }
+.cart-sum__row { display: flex; justify-content: space-between; font-size: var(--t-small); }
+.cart-sum__row--discount { color: var(--c-success); }
+.cart-sum__total { font-size: var(--t-body); font-weight: 700; padding-top: var(--s-3); border-top: 1px solid var(--c-line); margin-top: var(--s-1); }
